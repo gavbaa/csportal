@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Releases for Product XXX</h1>
+
+{% for mainline in mainlines %}
+    <h2>{{ mainline.name }}</h2>
+    {% for release in releases_by_mainline[mainline.pk] %}
+        <ul>
+            <li>
+                <a href="{{ url('release_view', kwargs={'product_id': release.mainline.product.pk, 'release_id': release.pk}) }}">{{ release.version_number }} - {{ release.release_date }}</a>
+            </li>
+        </ul>
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}
