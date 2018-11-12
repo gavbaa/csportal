@@ -62,5 +62,8 @@ class ReleaseFile(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def get_filename(self):
+        return self.file.name.split('/')[-1]
+
     def __str__(self):
         return '%s - %s (%s)' % (self.release, self.name or '(no name)', self.file.name)

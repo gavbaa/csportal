@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>My Products</h1>
+
+<ul>
+{% for op in owned_products %}
+    <li>
+        <a href="{{ url('product_view', kwargs={'product_id': op.product.pk}) }}">{{ op.product.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

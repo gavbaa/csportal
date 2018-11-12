@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Downloads for Product XXX, Release YYY</h1>
+<h1>Downloads for {{ product.name }}, {{ release.version_number }}</h1>
 
 <ul>
 {% for file in files %}
     <li>
         <h3>{{ file.file_type.name }}</h3>
-        <a href="{{ url('release_download', kwargs={'product_id': release.mainline.product.pk, 'release_id': release.pk, 'release_file_id': file.pk}) }}">{{ file.file }}</a>
+        <a href="{{ url('release_download', kwargs={'product_id': release.mainline.product.pk, 'release_id': release.pk, 'release_file_id': file.pk}) }}">{{ file.get_filename() }}</a>
     </li>
 {% endfor %}
 </ul>
