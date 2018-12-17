@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Downloads for {{ product.name }}, {{ release.version_number }}</h1>
-
-<ul>
+<div class="container">
+    <h1 class="pagetitle">Downloads for {{ product.name }}, {{ release.version_number }}</h1>
+<p>Choose from the following installation files.</p>
+<ul class="products">
 {% for file in files %}
     <li>
         <h3>{{ file.file_type.name }}</h3>
@@ -11,5 +12,5 @@
     </li>
 {% endfor %}
 </ul>
-
+</div>
 {% endblock %}
