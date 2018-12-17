@@ -131,4 +131,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = '/apps/'
+
 from settings_local import *

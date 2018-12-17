@@ -13,6 +13,8 @@ from django.db import models
 class OwnedProduct(models.Model):
     group = models.ForeignKey('auth.Group', on_delete=models.CASCADE)
     product = models.ForeignKey('appable.Product', on_delete=models.CASCADE)
+    purchased_on = models.DateTimeField()
+    valid_until = models.DateTimeField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
