@@ -21,7 +21,7 @@ import whatsmine.views
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls),
+    path('supersecretadmin/', admin.site.urls),
     path('apps/', include('whatsmine.urls')),
     path('', whatsmine.views.homepage)
 ]
