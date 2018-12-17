@@ -1,14 +1,17 @@
 import collections
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from appable.models import Release, Product, ReleaseFile
 from whatsmine.models import OwnedProduct, OwnedMainline
 
 
 def homepage(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('products_view'))
     return render(request, 'whatsmine/homepage.html', {})
 
 
