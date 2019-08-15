@@ -18,6 +18,9 @@ class OwnedProduct(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta(object):
+        ordering = ['group__name', 'product__name']
+
     def __str__(self):
         return '%s, %s' % (self.group, self.product)
 
@@ -27,6 +30,9 @@ class OwnedMainline(models.Model):
     mainline = models.ForeignKey('appable.Mainline', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    class Meta(object):
+        ordering = ['owned_product__group__name', 'owned_product__product__name', 'mainline__name']
 
     def __str__(self):
         return '%s, %s' % (self.owned_product, self.mainline)
