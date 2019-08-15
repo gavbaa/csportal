@@ -3,12 +3,17 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<style>
+    label{width: 89px;}
+</style>
 <div class="container">
-    <h1 class="pagetitle">Login</h1>
-    <form method="post">
-        {{ csrf_input }}
-        {{ form.as_p() }}
-        <button class="btn btn-primary" type="submit">Login</button>
-    </form>
+    <div style="text-align: center; margin: 0 auto; padding-top:100px;">
+        <h1 class="pagetitle">Login</h1>
+        <form method="post">
+            {{ csrf_input }}
+            {{ form.as_p() }}
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

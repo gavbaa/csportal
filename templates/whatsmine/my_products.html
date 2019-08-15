@@ -3,7 +3,9 @@
 {% block content %}
 
 <div class="container">
-<h1 class="pagetitle">My Products</h1>
+    <div style="display: flex;">
+        <h1 class="pagetitle" style="margin-right:10px;"><i style="color:#f58200;" class="fas fa-boxes"></i></h1><h1 class="pagetitle">My Products</h1>
+    </div>
     <p>Click a product below to download your preferred version.</p>
     <ul class="products">
     {% for op in owned_products %}

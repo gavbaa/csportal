@@ -2,7 +2,9 @@
 
 {% block content %}
 <div class="container">
-<h1 class="pagetitle">Releases for {{ product.name }}</h1>
+    <div style="display: flex;">
+        <h1 class="pagetitle" style="margin-right:10px;"><i style="color:#f58200;" class="fas fa-code-branch"></i></h1><h1 class="pagetitle">Releases for {{ product.name }}</h1>
+    </div>
     <p>Choose the version of your product below to access the installation files.</p>
 {% for mainline in mainlines %}
     <h2>{{ mainline.name }}</h2>

@@ -2,8 +2,10 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="pagetitle">Downloads for {{ product.name }}, {{ release.version_number }}</h1>
-<p>Choose from the following installation files.</p>
+    <div style="display: flex;">
+        <h1 class="pagetitle" style="margin-right:10px;"><i style="color:#f58200;" class="fas fa-cloud-download-alt"></i></h1><h1 class="pagetitle">Downloads for {{ product.name }}, {{ release.version_number }}</h1>
+    </div>
+        <p>Choose from the following installation files.</p>
 <ul class="products">
 {% for file in files %}
     <li>
