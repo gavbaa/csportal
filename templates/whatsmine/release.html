@@ -14,5 +14,9 @@
     </li>
 {% endfor %}
 </ul>
+    <h2 style="margin-right:10px; margin-bottom: 20px;">Release Notes for {{ product.name }}, {{ release.version_number }}</h1>
+    <div>
+        {{ release.notes|replace('\n', '<br>'|safe) }}
+    </div>
 </div>
 {% endblock %}
