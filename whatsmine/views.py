@@ -35,11 +35,17 @@ def my_releases_for_product(request, product_id):
         owned_product = OwnedProduct.objects.select_related('product').get(product__pk=product_id, group__in=groups)
     except OwnedProduct.DoesNotExist:
         raise Http404
-    owned_mainlines = OwnedMainline.objects.select_related('mainline').filter(owned_product__group__in=groups)
-    releases = Release.objects.select_related('mainline', 'mainline__product'). \
-        filter(mainline__product__pk=product_id, mainline__pk__in=[x.mainline.pk for x in owned_mainlines]). \
-        filter(release_date__lte=owned_product.valid_until). \
-        order_by('-mainline__release_date', '-release_date')
+    if product.separate_ownership_by_mainline:
+        owned_mainlines = OwnedMainline.objects.select_related('mainline').filter(owned_product__group__in=groups)
+        releases = Release.objects.select_related('mainline', 'mainline__product'). \
+            filter(mainline__product__pk=product_id, mainline__pk__in=[x.mainline.pk for x in owned_mainlines]). \
+            filter(release_date__lte=owned_product.valid_until). \
+            order_by('-mainline__release_date', '-release_date')
+    else:
+        releases = Release.objects.select_related('mainline', 'mainline__product'). \
+            filter(mainline__product__pk=product_id). \
+            filter(release_date__lte=owned_product.valid_until). \
+            order_by('-mainline__release_date', '-release_date')
 
     mainlines_unique = collections.OrderedDict()
     for x in releases:

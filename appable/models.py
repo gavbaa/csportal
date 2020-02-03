@@ -5,6 +5,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     product_key = models.CharField(max_length=100)
     notes = models.TextField(blank=True)
+    separate_ownership_by_mainline = models.BooleanField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
