@@ -2,5 +2,8 @@ from django.contrib import admin
 from whatsmine.models import OwnedProduct, OwnedMainline
 
 
-admin.site.register(OwnedProduct)
+class OwnedProductAdmin(admin.ModelAdmin):
+    list_display = ('group', 'product', 'purchased_on', 'valid_until',)
+
+admin.site.register(OwnedProduct, OwnedProductAdmin)
 admin.site.register(OwnedMainline)
